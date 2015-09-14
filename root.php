@@ -10,14 +10,14 @@ $headers = [
     'Content-Type' => 'application/json; charset=UTF-8',
     'Cookie' => $config['cookie'],
 ];
-$body = $config['raw'];
+$payload = $config['payload'];
 
 $times = 0;
 
-function addCourse($client, $url, $headers, $body) {
+function addCourse($client, $url, $headers, $payload) {
     $response = $client->request('post', $url, [
         'headers' => $headers,
-        'body' => $body,
+        'body' => $payload,
     ]);
 
     return $response;
@@ -34,7 +34,7 @@ function parseResponse($response) {
 }
 
 do {
-    $response = addCourse($client, $url, $headers, $body);
+    $response = addCourse($client, $url, $headers, $payload);
     $result = parseResponse($response);
     $message = $result[0]->args[0];
     $state = $message == '課程人數已滿 !';

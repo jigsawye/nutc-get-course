@@ -2,5 +2,5 @@
 
 return [
     'cookie' => 'your-cookie',
-    'raw' => 'your-rawdata',
+    'payload' => 'your-payload',
 ];
